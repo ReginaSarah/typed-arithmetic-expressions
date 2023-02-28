@@ -11,8 +11,10 @@
 
    (--> (in-hole c false)
         (in-hole c boolean))
+
    (--> (in-hole c true)
         (in-hole c boolean))
+
    (--> (in-hole c natural_1)
         (in-hole c natural))
 
@@ -36,13 +38,15 @@
 ;(traces typing (term (succ 4)))
 ;(traces typing (term (iszero 4)))
 ;(traces typing (term (pred 4)))
-(traces typing (term (Tif #f 2 true)))
+;(traces typing (term (Tif #f 2 true)))
 
 (apply-reduction-relation typing (term true))
 (apply-reduction-relation typing (term 0))
-(apply-reduction-relation typing (term (succ 4)))
+(apply-reduction-relation typing (term (succ (pred (succ 2)))))
 (apply-reduction-relation typing (term (pred 5)))
 (apply-reduction-relation typing (term (iszero 5)))
+(apply-reduction-relation typing (term (iszero (pred (succ 2)))))
+(traces typing (term (iszero (pred (succ 2)))))
 
 ;(traces typing (term (Tif #f 2 true)))
 ;(traces typing (term (succ 4)))
