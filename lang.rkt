@@ -12,20 +12,22 @@
      (succ t)
      (pred t)
      (iszero t)
-     )
+     T)
   (v true
      false
      nv)
   (nv 0
       (succ nv))
   (c (Tif c t t)
+     (Tif bool c t)
+     (Tif bool T c)
      (pred c)
      (iszero c)
      (succ c)
      hole
      )
-  [T boolean
-     natural] 
+  [T bool
+     nat] 
   )
 
 (define-extended-language Typing Arithmetic
