@@ -1,0 +1,33 @@
+#lang racket
+
+(require redex)
+(require "./lang.rkt")
+(provide (all-defined-out))
+
+
+(define typing
+  (reduction-relation 
+   Typing
+   
+   (--> (in-hole c true)
+        (in-hole c boolean))
+   (--> (in-hole c false)
+        (in-hole c boolean))
+   (--> (in-hole c natural_1)
+        (in-hole c natural))
+   (--> (in-hole c (succ t))
+        (in-hole c natural))
+   (--> (in-hole c (pred t))
+        (in-hole c natural))
+   (--> (in-hole c (iszero t))
+        (in-hole c boolean))
+   )
+  )
+
+;(traces typing (term true))
+;(traces typing (term false))
+;(traces typing (term 0))
+;(traces typing (term (succ 4)))
+;(traces typing (term (iszero 4)))
+;(traces typing (term (pred 4)))
+(apply-reduction-relation typing (term (iszero (pred 4))))

@@ -5,20 +5,18 @@
 (provide (all-defined-out))
 
 (define-language Arithmetic
-  (t true
-     false
-     (Tif t t t)
-     0
-     (succ t)
+  (t v
+     ('if' t 'then' t 'else' t)
      (pred t)
      (iszero t)
+     (succ t)
      )
   (v true
      false
      nv)
-  (nv 0
+  (nv natural
       (succ nv))
-  (c (Tif c t t)
+  (c ('if' t 'then' t 'else' c)
      (pred c)
      (iszero c)
      (succ c)
